@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:test1/BMICalculator/screen.dart';
 
+import 'modules/home/first_test.dart';
+import 'modules/login/login.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BMICALC(),
+      home: FirstTest(),
     );
   }
 }

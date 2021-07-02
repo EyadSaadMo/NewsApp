@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: SingleChildScrollView(
-                    child: Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -72,15 +72,16 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                     )),
-                     SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Text('Don\'t have an account'),
-                  TextButton(onPressed: (){}, child: Text('Register Now'))
-                ],)
+                    Text('Don\'t have an account'),
+                    TextButton(onPressed: () {}, child: Text('Register Now'))
+                  ],
+                )
               ],
             ),
           ),
