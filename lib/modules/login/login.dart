@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test1/shared/components/components.dart';
 
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
@@ -21,57 +22,46 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  onFieldSubmitted: (val) {
-                    print(val);
-                  },
-                  onChanged: (val) {
-                    print(val);
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    prefixIcon: Icon(Icons.email),
-                    border: OutlineInputBorder(),
-                  ),
+                defaultformfield(
+                    controller: emailController,
+                    type: TextInputType.emailAddress,
+                    lable: 'Email',
+                    prefix: Icons.email,
+                    validate: (String value){
+                        if(value.isEmpty){
+                          return 'Required';
+                        }
+                      return null;
+                    }
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                TextFormField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  onFieldSubmitted: (val) {
-                    print(val);
-                  },
-                  onChanged: (val) {
-                    print(val);
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'password',
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.remove_red_eye),
-                    border: OutlineInputBorder(),
-                  ),
+                defaultformfield(
+                  prefix: null,
+                    controller: passwordController,
+                    type: TextInputType.visiblePassword,
+                    lable: 'Password',
+                    sufix: Icons.remove_red_eye,
+                    isPassword: true,
+                    validate: (String value){
+                      if(value.isEmpty){
+                        return 'Required';
+                      }
+                      return null;
+                    }
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                    width: double.infinity,
-                    color: Colors.blue,
-                    child: MaterialButton(
-                      onPressed: () {
-                        print(emailController.text);
-                        print(passwordController.text);
-                      },
-                      child: Text(
-                        'LOGIN',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )),
+                defaultButtons(
+                    text: "login",
+                    raduis: 0.0,
+                    isUppercase: true,
+                    function: () {
+                      print(emailController.text);
+                      print(passwordController.text);
+                    }),
                 SizedBox(
                   height: 10,
                 ),
