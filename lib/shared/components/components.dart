@@ -31,8 +31,9 @@ Widget defaultformfield({
   @required Function validate,
   @required String lable,
   @required IconData prefix,
-  IconData sufix,
+  IconData suffix,
   bool isPassword=false,
+  Function suffixPressed,
 
 }) =>
     TextFormField(
@@ -46,7 +47,9 @@ Widget defaultformfield({
         labelText: lable,
 
         prefixIcon: Icon(prefix),
-        suffixIcon: sufix != null? Icon(sufix) : null,
+        suffixIcon: suffix != null? IconButton(
+          onPressed: suffixPressed,
+          icon: Icon(suffix)) : null,
         border: OutlineInputBorder(),
       ),
     );

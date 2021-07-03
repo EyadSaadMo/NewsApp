@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:test1/shared/components/components.dart';
+var emailController = TextEditingController();
+var passwordController = TextEditingController();
+bool isPassword = true;
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
 
-class LoginScreen extends StatelessWidget {
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +43,17 @@ class LoginScreen extends StatelessWidget {
                   height: 15,
                 ),
                 defaultformfield(
-                  prefix: null,
                     controller: passwordController,
                     type: TextInputType.visiblePassword,
                     lable: 'Password',
-                    sufix: Icons.remove_red_eye,
-                    isPassword: true,
+                    suffix: isPassword ? Icons.visibility_off:Icons.visibility ,
+                    prefix: Icons.lock,
+                    isPassword: isPassword,
+                    suffixPressed: (){
+                      setState(() {
+                        isPassword = ! isPassword;
+                      });
+                    },
                     validate: (String value){
                       if(value.isEmpty){
                         return 'Required';
@@ -59,8 +69,11 @@ class LoginScreen extends StatelessWidget {
                     raduis: 0.0,
                     isUppercase: true,
                     function: () {
+
                       print(emailController.text);
                       print(passwordController.text);
+
+
                     }),
                 SizedBox(
                   height: 10,
