@@ -27,7 +27,33 @@ class _HomeLayoutState extends State<HomeLayout> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+
+        onPressed: () //async  // async=> operate in background
+        {
+          // try
+          // {
+          //   var name= await getName(); //
+          //   //  await=> await until the operation finishing and return the data from background
+          //   print(name);
+          //   throw('some error !!!!!!!'); // i made error by me
+          // }
+          // catch(error) // take parameter called anything I named him 'error'
+          // {
+          //    print('error ${error.toString()}');
+          // }
+          getName().then((value) // every thing called 'Future' available 'then'
+          /* then make every thing that try and catch do
+          it make async form the background and await the data to return
+          */
+          {
+            print(value);
+            print('eyad');
+            // throw('i made this error!!!');
+          }).catchError((error){
+            print('error is ${error.toString()}');
+          });
+
+        },
         child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -54,5 +80,10 @@ class _HomeLayoutState extends State<HomeLayout> {
        if you want to toggle between three screen make (List)
      */
     );
+  }
+  //Instance of 'Future<String>'
+  Future<String> getName() async
+  {
+   return 'yosef eyad';
   }
 }
